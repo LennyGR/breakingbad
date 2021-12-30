@@ -1,0 +1,2 @@
+export const ADD_VISIT_PROFILE = "ADD_VISIT_PROFILE";
+export const SET_QUOTABLES = "SET_QUOTABLES";

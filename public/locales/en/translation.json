@@ -1,0 +1,18 @@
+{
+    "Name": "Name",
+    "Birthday": "Birthday",
+    "Unknown": "Unknown",
+    "Info about": "Info about {{name}}",
+    "Occupation": "Occupation",
+    "Status": "Status",
+    "Deceased": "Deceased",
+    "Nickname":"Nickname",
+    "Seasons":"Seasons",
+    "Portrayed":"Portrayed",
+    "Categories": "Categories",
+    "This character has no more quotes!": "This character has no more quotes!",
+    "This is an error alert — check it out!": "This is an error alert — check it out!",
+    "Popular": "Popular",
+    "There are no profiles yet!": "There are no profiles yet!",
+    "Visits":"Visits: {{numvisits}}"
+}

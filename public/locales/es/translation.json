@@ -1,0 +1,18 @@
+{
+    "Name": "Nombre",
+    "Birthday": "Cumpleaños",
+    "Unknown": "Desconocido",
+    "Info about": "Información sobre {{name}}",
+    "Occupation": "Ocupación",
+    "Status": "Estado",
+    "Deceased": "Fallecido",
+    "Nickname":"Apodo",
+    "Seasons":"Temporadas",
+    "Portrayed":"Interpretado por",
+    "Categories": "Categorías",
+    "This character has no more quotes!": "Éste personaje no tiene más frases",
+    "This is an error alert — check it out!": "Se ha producido un error",
+    "Popular": "Populares",
+    "There are no profiles yet!": "¡Aún no hay perfiles que mostrar!",
+    "Visits":"Visitas: {{numvisits}}"
+}
