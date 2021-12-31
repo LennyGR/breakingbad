@@ -14,6 +14,8 @@ const getCharacters = async() => {
 }
 
 export default function useCharacters() {
-    return useQuery(["characters"], () => getCharacters());
+    return useQuery(["characters"], () => getCharacters(), {
+        staleTime: 300000
+    });
 }
   

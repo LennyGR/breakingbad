@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 //Components
@@ -13,8 +14,13 @@ import { ProfileContainer, MainContainer, BioContainer, ProfileList, CustomAvata
 //Selectores
 import { getVisits, getRankingPosition, quotable_characters } from '../../redux/selectors';
 
+//CATEGORIES
+const BREAKINGBAD = 'Breaking Bad';
+const BETTERCALL = 'Better Call Saul';
+
 const Profile = (props) => {
     const { profile } = props;
+    const { t } = useTranslation();
 
     const visits = useSelector((state) => getVisits(state, profile.char_id));
     const position = useSelector((state) => getRankingPosition(state, profile.char_id));
@@ -50,12 +56,16 @@ const Profile = (props) => {
                         <ProfileListItem title={'Status'} value={profile.status} icon={'PermIdentityIcon'}/>
                         {/* Nickname */}
                         <ProfileListItem title={'Nickname'} value={profile.nickname} icon={'MoodIcon'}/>
-                        {/* Appearance */}
-                        <ProfileListItem title={'Seasons'} value={profile.appearance.join(',')} icon={'ConnectedTvIcon'}/>
                         {/* Portrayed */}
                         <ProfileListItem title={'Portrayed'} value={profile.portrayed} icon={'TheaterComedyIcon'}/>
                         {/* Category */}
                         <ProfileListItem title={'Categories'} value={profile.category} icon={'CategoryIcon'}/>
+                        {/* Appearance BB*/}
+                        {profile.category.includes(BREAKINGBAD) &&
+                        <ProfileListItem title={t('Seasons in', { category: BREAKINGBAD })} value={profile.appearance.join(',')} icon={'ConnectedTvIcon'}/>}
+                        {/* Appearance BCS*/}
+                        {profile.category.includes(BETTERCALL) &&
+                        <ProfileListItem title={t('Seasons in', { category: BETTERCALL })} value={profile.better_call_saul_appearance.join(',')} icon={'ConnectedTvIcon'}/>}
                     </ProfileList>
                 </BioContainer>
             </ProfileContainer>

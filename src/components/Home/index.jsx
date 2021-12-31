@@ -3,23 +3,31 @@ import React from 'react';
 //Components
 import CharacterCard from '../CharacterCard';
 import ErrorBoundary from '../ErrorBoundary';
-import ContentLoader from '../Status/ContentLoader';
 import ErrorAlert from '../Status/ErrorAlert';
 
 //styles
-import { Wrapper, GridContainer, GridBox } from '../../styles/Common.styles';
+import { Wrapper, GridContainer, GridBox, CircularProgress, KeepLoading } from '../../styles/Common.styles';
 
 //hooks
-import useCharacters from '../../hooks/useCharacters';
+import usePagedCharacters from '../../hooks/usePagedCharacters';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const Home = () => {
-    const { isLoading, data, isError } = useCharacters();
+    const loadMoreButtonRef = React.useRef();
+    const {
+        data,
+        error,
+        fetchNextPage,
+        hasNextPage = true,
+      } = usePagedCharacters();
 
-    if (isLoading) {
-        return (<ContentLoader />);
-    }
+    useIntersectionObserver({
+        target: loadMoreButtonRef,
+        onIntersect: fetchNextPage,
+        enabled: hasNextPage,
+    })
 
-    if (isError) {
+    if (error) {
         return (<ErrorAlert />);
     }
 
@@ -28,10 +36,18 @@ const Home = () => {
             <Wrapper data-testid={`home_container`}>
                 <GridContainer>
                     <GridBox>
-                        {data && data.map((item) => (
-                            <CharacterCard key={`chardId_${item.char_id}`} item={item} />
-                        ))}
+                        {data && data.pages && data.pages.map(page => (
+                            <React.Fragment key={page.nextId}>
+                                {page.data.map(item => (
+                                    <CharacterCard key={`chardId_${item.char_id}`} item={item} />
+                                ))}
+                            </React.Fragment>)
+                            )
+                        }
                     </GridBox>
+                    <KeepLoading ref={loadMoreButtonRef}>
+                        { hasNextPage && <CircularProgress color="success" size="5rem" thickness={8}/>}
+                    </KeepLoading>
                 </GridContainer>
             </Wrapper>
         </ErrorBoundary>);

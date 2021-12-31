@@ -14,5 +14,7 @@ export const getCharacter = async(id) => {
 }
 
 export default function useCharacter(id) {
-    return useQuery(["character",id], () => getCharacter(id));
+    return useQuery(["character",id], () => getCharacter(id), {
+        staleTime: 300000
+    });
 }

@@ -18,10 +18,10 @@ const LanguageSwitcher = () => {
         aria-label="text alignment"
       >
         <StyledToggleButton value="es" aria-label="es">
-            <Flag code="ES" height="16"/>
+            <Flag code="ES" height="16" width="24"/>
         </StyledToggleButton>
         <StyledToggleButton value="en" aria-label="en">
-            <Flag code="GB" height="16"/>
+            <Flag code="GB" height="16" width="32"/>
         </StyledToggleButton>
       </StyledToggleButtonGroup>);
 }

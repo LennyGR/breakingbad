@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { useDispatch } from 'react-redux';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 //Components
 import Header from './components/Header';
@@ -43,6 +44,7 @@ const App = () => {
         </Routes>
         <GlobalStyle />
       </Router>
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
     )
 };

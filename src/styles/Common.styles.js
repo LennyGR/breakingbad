@@ -77,4 +77,27 @@ export const TitleWrapper = styled.div`
 }
 `;
 
+export const ImageCard = styled.div`
+    background-color: #ccc;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 225px;
+    height: 335px!important;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+`;
+
+export const KeepLoading = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    width: 100%;
+`;
+
 export { CircularProgress, Alert };

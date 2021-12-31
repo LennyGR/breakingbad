@@ -26,7 +26,7 @@ describe('Profile', () => {
         nickname: 'nickname',
         appearance: [1,2,3],
         portrayed: 'Bryan Cranston',
-        category: 'category'
+        category: 'Breaking Bad'
     }
 
     beforeEach(() => {

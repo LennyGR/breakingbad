@@ -1,15 +1,15 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import CharacterCard from '.';
 import i18n from '../../i18n/i18nForTests';
-import userEvent from "@testing-library/user-event";
+import { createMemoryHistory } from 'history';
+import { BrowserRouter, Router } from "react-router-dom";
 
-const mockedUsedNavigate = jest.fn();
-jest.mock('react-router-dom', () => ({
-   ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate
-}));
+const renderWithRouter = (ui, {route = '/'} = {}) => {
+    window.history.pushState({}, 'Test page', route)
+    return render(ui, {wrapper: BrowserRouter})
+}
 
 describe('CharacterCard', () => {
     const card = {
@@ -24,17 +24,22 @@ describe('CharacterCard', () => {
     });
 
     test('renders content', () => {
-        render(<CharacterCard item={card}/>);
+        renderWithRouter(<CharacterCard item={card}/>);
 
         expect(screen.getByText('Nickname')).toBeInTheDocument();
         expect(screen.getByText('Name')).toBeInTheDocument();
     });
-    
-    test('click in profile', () => {
-        render(<CharacterCard item={card}/>);
 
-        const button = screen.getByRole('button', {ariaLabel: 'Info about'});
-        userEvent.click(button);
-        expect(mockedUsedNavigate).toHaveBeenCalledTimes(1);
-    });
+    test('Goes to proper profile', () => {
+        const history = createMemoryHistory({ initialEntries: ['/'] });
+        render(
+          <Router location={history.location} navigator={history}>
+            <CharacterCard item={card}/>
+          </Router>
+        );
+  
+        expect(history.location.pathname).toBe('/');
+        fireEvent.click(screen.getByRole('button', {ariaLabel: 'Info about'}));
+        expect(history.location.pathname).toBe(`/${card.char_id}`);
+      });
 });

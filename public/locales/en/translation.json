@@ -14,5 +14,7 @@
     "This is an error alert — check it out!": "This is an error alert — check it out!",
     "Popular": "Popular",
     "There are no profiles yet!": "There are no profiles yet!",
-    "Visits":"Visits: {{numvisits}}"
+    "Visits":"Visits: {{numvisits}}",
+    "Alive": "Alive",
+    "Seasons in": "Seasons in '{{category}}'"
 }

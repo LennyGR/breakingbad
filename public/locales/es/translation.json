@@ -14,5 +14,7 @@
     "This is an error alert — check it out!": "Se ha producido un error",
     "Popular": "Populares",
     "There are no profiles yet!": "¡Aún no hay perfiles que mostrar!",
-    "Visits":"Visitas: {{numvisits}}"
+    "Visits":"Visitas: {{numvisits}}",
+    "Alive": "Vivo",
+    "Seasons in": "Temporadas en '{{category}}'"
 }
